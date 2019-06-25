@@ -7,7 +7,7 @@ import (
 )
 
 type (
-	// PainterRGBA paints to the RGBA image using any image as a source
+	// PainterRGBA paints over the RGBA image using any image as a source
 	PainterRGBA struct {
 		im *image.RGBA
 		si image.Image
@@ -21,6 +21,7 @@ func NewImagePainterRGBA(rgba *image.RGBA, src image.Image) *PainterRGBA {
 	return &PainterRGBA{im: rgba, si: src}
 }
 
+// Paint uses fragments of source image and paints them over RGBA image
 func (ip *PainterRGBA) Paint(ss []raster.Span, done bool) {
 	b := ip.im.Bounds()
 	for _, s := range ss {

@@ -25,12 +25,13 @@ func (sc *SpanCache) Paint(ss []raster.Span, done bool) {
 	*sc = append(*sc, ss...)
 }
 
-// UsePainter sends all spans to a Painter
+// UsePainter makes a single Paint call with all collected spans
 func (sc SpanCache) UsePainter(p raster.Painter) {
 	p.Paint(sc, true)
 }
 
-// OptimizeSpans connects bounds when X0 from current Span and X1 from previous one are equal
+// OptimizeSpans connects bounds when X0 from current Span and X1 from previous one are equal.
+// Y and Alpha must also be equal.
 func OptimizeSpans(sc SpanCache) SpanCache {
 	for i := 1; i < len(sc); i++ {
 		ps, cs := sc[i-1], sc[i]
