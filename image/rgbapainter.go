@@ -7,7 +7,7 @@ import (
 )
 
 type (
-	//PainterRGBA paints to the RGBA image using any image as a source
+	// PainterRGBA paints to the RGBA image using any image as a source
 	PainterRGBA struct {
 		im *image.RGBA
 		si image.Image
@@ -16,7 +16,7 @@ type (
 
 const m = 1<<16 - 1
 
-//NewImagePainterRGBA creates a new RGBA painter instance
+// NewImagePainterRGBA creates a new RGBA painter instance
 func NewImagePainterRGBA(rgba *image.RGBA, src image.Image) *PainterRGBA {
 	return &PainterRGBA{im: rgba, si: src}
 }
